@@ -12,8 +12,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Update Gist
-        uses: bokub/github-stats-box@94129525049c55b512c1b827732298c9f80a4023
+        
+      - name: Run Stats Box
+        uses: docker://bokub/github-stats-box:latest
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           GIST_ID: ${{ secrets.GIST_ID }}
