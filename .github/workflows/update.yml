@@ -1,17 +1,17 @@
 name: Update Gist
 on:
   push:
-    branches: [ main ]
+    branches: [ main, master ] # 두 브랜치 모두 대응
   schedule:
-    - cron: "0 0 * * *" # 매일 자정에 업데이트
-  workflow_dispatch: # 수동 실행 버튼 생성
+    - cron: "0 0 * * *"
+  workflow_dispatch:
 
 jobs:
   update-gist:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: bokub/github-stats-box@master
+      - uses: bokub/github-stats-box@v1.2 # 버전을 명시하여 안정성 확보
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           GIST_ID: ${{ secrets.GIST_ID }}
